@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Restaurant Name</title>
+  <title>KebabHouse mixApetit</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -39,18 +39,12 @@
     <div class="container d-flex justify-content-center justify-content-md-between">
 
       <div class="contact-info d-flex align-items-center">
-        <a href="tel:+155895548855">
-        <i class="bi bi-phone d-flex align-items-center"><span>+1 5589 55488 55</span></i>
+        <a href="tel:+420736602552">
+        <i class="bi bi-phone d-flex align-items-center"><span> 736 602 552</span></i>
         </a>
-        <i class="bi bi-clock d-flex align-items-center ms-4"><span> Mon-Sat: 10AM - 22PM</span></i>
+        <i class="bi bi-clock d-flex align-items-center ms-4"><span> Po-Ne: 10AM - 22PM</span></i>
       </div>
 
-      <div class="languages d-none d-md-flex align-items-center">
-        <ul>
-          <li>En</li>
-          <li><a href="#">De</a></li>
-        </ul>
-      </div>
     </div>
   </div>
 
@@ -58,23 +52,23 @@
   <header id="header" class="fixed-top d-flex align-items-cente">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-lg-between">
 
-      <h1 class="logo me-auto me-lg-0"><a href="{% url 'home' %}">Farshad Restaurant</a></h1>
+      <h1 class="logo me-auto me-lg-0"><a href="{% url 'home' %}">KebabHouse</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto active" href="#hero">Domov</a></li>
+          <li><a class="nav-link scrollto" href="#about">O nás</a></li>
           <li><a class="nav-link scrollto" href="#menu">Menu</a></li>
-          <li><a class="nav-link scrollto" href="#specials">Specials</a></li>
-          <li><a class="nav-link scrollto" href="#gallery">Gallery</a></li>
+          <li><a class="nav-link scrollto" href="#specials">Speciality</a></li>
+          <li><a class="nav-link scrollto" href="#gallery">Galerie</a></li>
           </li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Kontakt</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-      <a class="book-a-table-btn scrollto d-none d-lg-flex" data-bs-toggle="modal" data-bs-target="#exampleModal">Book a table</a>
+      <a class="btn btn-warning scrollto d-none d-lg-flex" data-bs-toggle="modal" data-bs-target="#exampleModal">Objednat teď</a>
 
     </div>
   </header><!-- End Header -->
@@ -87,8 +81,8 @@
       text-align: center;"  class="modal-header">
         
         <h5 class="modal-title" id="exampleModalLabel"><div class="section-title">
-          <h2>Chefs</h2>
-          <p>Our Proffesional Chefs</p>
+          <h2>větví</h2>
+          <p>Vyberte pobočku</p>
         </div></h5>
       </div>
       <div style="margin: auto;text-align: center;"  class="modal-body">
@@ -107,7 +101,7 @@
                       <span>Address</span>
                     </div>
                     <div class="social">
-                      <a href=""><button class="btn btn-warning">Choose</button></a>
+                      <a href="{% url 'order' %}"><button class="btn btn-warning">Vybrat</button></a>
                     </div>
                   </div>
                 </div>
@@ -120,7 +114,7 @@
                       <span>Address 2</span>
                     </div>
                     <div class="social">
-                      <a href=""><button class="btn btn-warning">Choose</button></a>
+                      <a href="{% url 'order' %}"><button class="btn btn-warning">Vybrat</button></a>
                     </div>
                   </div>
                 </div>
@@ -136,7 +130,7 @@
      
       </div>
       <div class="modal-footer">
-        <button style="background-color: rgba(41, 10, 37, 0.955);" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button style="background-color: rgba(41, 10, 37, 0.955);" type="button" class="btn btn-secondary" data-bs-dismiss="modal">zavřít</button>
       </div>
     </div>
   </div>
@@ -156,47 +150,41 @@
             <div class="container" data-aos="fade-up">
       
               <div class="section-title">
-                <h2>Reservation</h2>
-                <p>Book Your Food</p>
+                <h2>Rezervace</h2>
+                <p>Rezervujte si jídlo</p>
               </div>
       
               <form action="forms/book-a-table.php" method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
                 <div class="row">
                   <div class="col-lg-4 col-md-6 form-group">
-                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Tvé jméno" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
                     <div class="validate"></div>
                   </div>
                   <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
-                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
+                    <input type="text" class="form-control" name="phone" id="phone" placeholder="tvé číslo" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
                     <div class="validate"></div>
                   </div>
-                  <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
-                    <input type="text" class="form-control" name="phone" id="phone" placeholder="Your Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-                    <div class="validate"></div>
-                  </div>
+                  <label for="cars">vybrat jídlo:</label>
+                    <select class="form-control " style="width: 50%;" name="cars">
+                      {% for a in p %}
+                      <option value="{{a.name}}">{{a.name}}</option>
+                      {% endfor %}
+                    </select>
+                    <input type="number" class="form-control" style="width: 50%; float: right;" name="q" id="q" placeholder="zadejte množství"  data-msg="zadejte množství">
+
+                    
                   <div class="col-lg-4 col-md-6 form-group mt-3">
-                    <input type="text" name="date" class="form-control" id="date" placeholder="Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-                    <div class="validate"></div>
-                  </div>
-                  <div class="col-lg-4 col-md-6 form-group mt-3">
-                    <input type="text" class="form-control" name="time" id="time" placeholder="Time" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-                    <div class="validate"></div>
-                  </div>
-                  <div class="col-lg-4 col-md-6 form-group mt-3">
-                    <input type="number" class="form-control" name="people" id="people" placeholder="# of people" data-rule="minlen:1" data-msg="Please enter at least 1 chars">
+                    <label for="time">v kolik hodin to potřebuješ?</label>
+
+                    <input type="time" name="time" class="form-control" id="time" placeholder="" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
                     <div class="validate"></div>
                   </div>
                 </div>
                 <div class="form-group mt-3">
-                  <textarea class="form-control" name="message" rows="5" placeholder="Message"></textarea>
+                  <textarea class="form-control" name="message" rows="5" placeholder="Popis"></textarea>
                   <div class="validate"></div>
                 </div>
-                <div class="mb-3">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your booking request was sent. We will call back or send an Email to confirm your reservation. Thank you!</div>
-                </div>
-                <div class="text-center"><button type="submit">Book a Table</button></div>
+                <div class="text-center"><button type="submit">Odeslat objednávku</button></div>
               </form>
       
             </div>
@@ -210,111 +198,34 @@
 
         <div class="section-title">
           <h2>Menu</h2>
-          <p>Check Our Tasty Menu</p>
+          <p>Podívejte se na naše chutné menu</p>
         </div>
 
         <div class="row" data-aos="fade-up" data-aos-delay="100">
           <div class="col-lg-12 d-flex justify-content-center">
             <ul id="menu-flters">
-              <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-starters">Starters</li>
-              <li data-filter=".filter-salads">Salads</li>
-              <li data-filter=".filter-specialty">Specialty</li>
+              <li data-filter="*" class="filter-active">Všechno</li>
+              {% for a in c %}
+              <li data-filter=".filter-{{a.number}}">{{a.name}}</li>
+              {% endfor %}
             </ul>
           </div>
         </div>
 
         <div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
 
-          <div class="col-lg-6 menu-item filter-starters">
-            <img src="{% static '' %}assets/img/menu/lobster-bisque.jpg" class="menu-img" alt="">
-            <div class="menu-content">
-              <a href="#">Lobster Bisque</a><span>$5.95</span>
-            </div>
-            <div class="menu-ingredients">
-              Lorem, deren, trataro, filede, nerada
-            </div>
-          </div>
+          {% for a in p %}
 
-          <div class="col-lg-6 menu-item filter-specialty">
-            <img src="{% static '' %}assets/img/menu/bread-barrel.jpg" class="menu-img" alt="">
+          <div class="col-lg-6 menu-item filter-{{a.category.number}}">
+            <img src="{{a.imageURL}}" class="menu-img" alt="">
             <div class="menu-content">
-              <a href="#">Bread Barrel</a><span>$6.95</span>
+              <a href="#">{{a.name}}</a><span>{{a.price}}</span>
             </div>
             <div class="menu-ingredients">
-              Lorem, deren, trataro, filede, nerada
+              {{a.info}}
             </div>
           </div>
-
-          <div class="col-lg-6 menu-item filter-starters">
-            <img src="{% static '' %}assets/img/menu/cake.jpg" class="menu-img" alt="">
-            <div class="menu-content">
-              <a href="#">Crab Cake</a><span>$7.95</span>
-            </div>
-            <div class="menu-ingredients">
-              A delicate crab cake served on a toasted roll with lettuce and tartar sauce
-            </div>
-          </div>
-
-          <div class="col-lg-6 menu-item filter-salads">
-            <img src="{% static '' %}assets/img/menu/caesar.jpg" class="menu-img" alt="">
-            <div class="menu-content">
-              <a href="#">Caesar Selections</a><span>$8.95</span>
-            </div>
-            <div class="menu-ingredients">
-              Lorem, deren, trataro, filede, nerada
-            </div>
-          </div>
-
-          <div class="col-lg-6 menu-item filter-specialty">
-            <img src="{% static '' %}assets/img/menu/tuscan-grilled.jpg" class="menu-img" alt="">
-            <div class="menu-content">
-              <a href="#">Tuscan Grilled</a><span>$9.95</span>
-            </div>
-            <div class="menu-ingredients">
-              Grilled chicken with provolone, artichoke hearts, and roasted red pesto
-            </div>
-          </div>
-
-          <div class="col-lg-6 menu-item filter-starters">
-            <img src="{% static '' %}assets/img/menu/mozzarella.jpg" class="menu-img" alt="">
-            <div class="menu-content">
-              <a href="#">Mozzarella Stick</a><span>$4.95</span>
-            </div>
-            <div class="menu-ingredients">
-              Lorem, deren, trataro, filede, nerada
-            </div>
-          </div>
-
-          <div class="col-lg-6 menu-item filter-salads">
-            <img src="{% static '' %}assets/img/menu/greek-salad.jpg" class="menu-img" alt="">
-            <div class="menu-content">
-              <a href="#">Greek Salad</a><span>$9.95</span>
-            </div>
-            <div class="menu-ingredients">
-              Fresh spinach, crisp romaine, tomatoes, and Greek olives
-            </div>
-          </div>
-
-          <div class="col-lg-6 menu-item filter-salads">
-            <img src="{% static '' %}assets/img/menu/spinach-salad.jpg" class="menu-img" alt="">
-            <div class="menu-content">
-              <a href="#">Spinach Salad</a><span>$9.95</span>
-            </div>
-            <div class="menu-ingredients">
-              Fresh spinach with mushrooms, hard boiled egg, and warm bacon vinaigrette
-            </div>
-          </div>
-
-          <div class="col-lg-6 menu-item filter-specialty">
-            <img src="{% static '' %}assets/img/menu/lobster-roll.jpg" class="menu-img" alt="">
-            <div class="menu-content">
-              <a href="#">Lobster Roll</a><span>$12.95</span>
-            </div>
-            <div class="menu-ingredients">
-              Plump lobster meat, mayo and crisp lettuce on a toasted bulky roll
-            </div>
-          </div>
+          {% endfor %}
 
         </div>
 
@@ -333,14 +244,13 @@
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong><span>Restaurant Name</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>KebabHouse mixApetit</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
         Designed by <a href="https://instagram.com/ashkansarshari">AshkanSarshari</a>
       </div>
     </div>
   </footer><!-- End Footer -->
-
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
