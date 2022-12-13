@@ -154,7 +154,7 @@
                 <p>Rezervujte si jídlo</p>
               </div>
       
-              <form id="order-form" action="{% url 'order1' %}" method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
+              <form id="order-form" action="{% url 'order2' %}" method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
                 {% csrf_token %}
                 <div class="row">
                   <div class="col-lg-4 col-md-6 form-group">
@@ -227,7 +227,7 @@
       e.preventDefault();
       $.ajax({
           type: 'POST' , 
-          url : '{% url "order1" %}',
+          url : '{% url "order2" %}',
           data: serializedData  ,
           dataType: 'json',
           success: function (data) {
