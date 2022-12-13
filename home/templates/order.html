@@ -165,39 +165,68 @@
                     <input type="text" class="form-control" name="phone" id="phone" placeholder="tvé číslo" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
                     <div class="validate"></div>
                   </div>
-                  <label for="item1">vybrat jídlo:</label>
-                    <select class="form-control " style="width: 50%;" name="item1">
-                      <option></option>
-                      {% for a in p %}
-                      <option value="{{a.name}}">{{a.name}}</option>
-                      {% endfor %}
-                    </select>
-                    <input type="number" class="form-control" style="width: 50%; float: right;" name="q1" id="q1" placeholder="zadejte množství"  data-msg="zadejte množství">
-                    <label for="item2">vybrat jídlo:</label>
-                    <select class="form-control " style="width: 50%;" name="item2">
-                      <option></option>
-                      {% for a in p %}
-                      <option value="{{a.name}}">{{a.name}}</option>
-                      {% endfor %}
-                    </select>
-                    <input type="number" class="form-control" style="width: 50%; float: right;" name="q2" id="q2" placeholder="zadejte množství"  data-msg="zadejte množství">
-                    <label for="item3">vybrat jídlo:</label>
-                    <select class="form-control " style="width: 50%;" name="item3">
-                      <option></option>
-                      {% for a in p %}
-                      <option value="{{a.name}}">{{a.name}}</option>
-                      {% endfor %}
-                    </select>
-                    <input type="number" class="form-control" style="width: 50%; float: right;" name="q3" id="q3" placeholder="zadejte množství"  data-msg="zadejte množství">
-                    <label for="item4">vybrat jídlo:</label>
-                    <select class="form-control " style="width: 50%;" name="item4">
-                      <option></option>
-                      {% for a in p %}
-                      <option value="{{a.name}}">{{a.name}}</option>
-                      {% endfor %}
-                    </select>
-                    <input type="number" class="form-control" style="width: 50%; float: right;" name="q4" id="q4" placeholder="zadejte množství"  data-msg="zadejte množství">
+                  <label for="item1">vybrat jídlo:</label>       
 
+                    <select class="form-control " style="width: 45%;" name="item1">
+                      <option value="">jídlo</option>
+                      {% for a in p %}
+                      <option value="{{a.name}}">{{a.name}}</option>
+                      {% endfor %}
+                    </select> &nbsp;&nbsp;
+                    <input type="number" class="form-control" style="width: 15%; float: right;" name="q1" id="q1" placeholder="ks"  data-msg="zadejte množství">
+                    &nbsp;&nbsp;
+
+                    <select class="form-control " style="width: 35% ; float: right;" name="sos1">
+                      <option value="">omáčka</option>
+                      {% for a in s %}
+                      <option value="{{a.name}}">{{a.name}}</option>
+                      {% endfor %}
+                    </select>
+                    <label for="item2">vybrat jídlo:</label>
+                    <select class="form-control " style="width: 45%;" name="item2">
+                      <option value="">jídlo</option>
+                      {% for a in p %}
+                      <option value="{{a.name}}">{{a.name}}</option>
+                      {% endfor %}
+                    </select> &nbsp;&nbsp;
+                    <input type="number" class="form-control" style="width: 15%; float: right;" name="q2" id="q2" placeholder="ks"  data-msg="zadejte množství">
+                    &nbsp;&nbsp;
+                    <select class="form-control " style="width: 35% ; float: right;" name="sos2">
+                      <option value="">omáčka</option>
+                      {% for a in s %}
+                      <option value="{{a.name}}">{{a.name}}</option>
+                      {% endfor %}
+                    </select>
+                    <label for="item3">vybrat jídlo:</label>
+                    <select class="form-control " style="width: 45%;" name="item3">
+                      <option value="">jídlo</option>
+                      {% for a in p %}
+                      <option value="{{a.name}}">{{a.name}}</option>
+                      {% endfor %}
+                    </select> &nbsp;&nbsp;
+                    <input type="number" class="form-control" style="width: 15%; float: right;" name="q3" id="q3" placeholder="ks"  data-msg="zadejte množství">
+                    &nbsp;&nbsp;
+                    <select class="form-control " style="width: 35% ; float: right;" name="sos3">
+                      <option value="">omáčka</option>
+                      {% for a in s %}
+                      <option value="{{a.name}}">{{a.name}}</option>
+                      {% endfor %}
+                    </select>
+                    <label for="item4">vybrat jídlo:</label>
+                    <select class="form-control " style="width: 45%;" name="item4">
+                      <option value="">jídlo</option>
+                      {% for a in p %}
+                      <option value="{{a.name}}">{{a.name}}</option>
+                      {% endfor %}
+                    </select> &nbsp;&nbsp;
+                    <input type="number" class="form-control" style="width: 15%; float: right;" name="q4" id="q4" placeholder="ks"  data-msg="zadejte množství">
+                    &nbsp;&nbsp;
+                    <select class="form-control " style="width: 35% ; float: right;" name="sos4">
+                      <option value="">omáčka</option>
+                      {% for a in s %}
+                      <option value="{{a.name}}">{{a.name}}</option>
+                      {% endfor %}
+                    </select>
 
                     
                   <div class="col-lg-4 col-md-6 form-group mt-3">

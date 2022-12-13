@@ -9,6 +9,11 @@ admin.site.register(Product)
 admin.site.register(Order)
 admin.site.register(Contact)
 admin.site.register(Order2)
+admin.site.register(Sauce)
+admin.site.register(Drink)
+
+
+
 
 
 

@@ -30,12 +30,16 @@ class Order(models.Model):
     phone = models.CharField(max_length=200)
     item1 = models.CharField(max_length=200, null=True , blank=True)
     q1 = models.IntegerField(null=True , blank=True)
+    sos1 = models.CharField(max_length=200, null=True , blank=True)
     item2 = models.CharField(max_length=200, null=True , blank=True)
     q2 = models.IntegerField(null=True , blank=True)
+    sos2 = models.CharField(max_length=200, null=True , blank=True)
     item3 = models.CharField(max_length=200, null=True , blank=True)
     q3 = models.IntegerField(null=True , blank=True)
+    sos3 = models.CharField(max_length=200, null=True , blank=True)
     item4 = models.CharField(max_length=200, null=True , blank=True)
     q4 = models.IntegerField(null=True , blank=True)
+    sos4 = models.CharField(max_length=200, null=True , blank=True)
     date_ordered = models.DateTimeField(default=now)
     date_needed = models.CharField(max_length=200 , null=True, blank=True)
     msg = models.TextField(max_length=1000, null=True,blank=True)
@@ -64,12 +68,16 @@ class Order2(models.Model):
     phone = models.CharField(max_length=200)
     item1 = models.CharField(max_length=200, null=True , blank=True)
     q1 = models.IntegerField(null=True , blank=True)
+    sos1 = models.CharField(max_length=200, null=True , blank=True)
     item2 = models.CharField(max_length=200, null=True , blank=True)
     q2 = models.IntegerField(null=True , blank=True)
+    sos2 = models.CharField(max_length=200, null=True , blank=True)
     item3 = models.CharField(max_length=200, null=True , blank=True)
     q3 = models.IntegerField(null=True , blank=True)
+    sos3 = models.CharField(max_length=200, null=True , blank=True)
     item4 = models.CharField(max_length=200, null=True , blank=True)
     q4 = models.IntegerField(null=True , blank=True)
+    sos4 = models.CharField(max_length=200, null=True , blank=True)
     date_ordered = models.DateTimeField(default=now)
     date_needed = models.CharField(max_length=200 , null=True, blank=True)
     msg = models.TextField(max_length=1000, null=True,blank=True)
@@ -88,3 +96,12 @@ class Contact(models.Model):
     def __str__(self):
 
         return self.subject  
+
+class Sauce(models.Model):
+    name = models.CharField(max_length=100)
+    def __str__(self):
+        return self.name 
+class Drink(models.Model):
+    name = models.CharField(max_length=100)
+    def __str__(self):
+        return self.name 
