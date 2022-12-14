@@ -43,6 +43,28 @@
         <i class="bi bi-phone d-flex align-items-center"><span> 736 602 552</span></i>
         </a>
         <i class="bi bi-clock d-flex align-items-center ms-4"><span> Po-Ne: 10AM - 22PM</span></i>
+        {% if user.is_authenticated %}
+        <li class="nav-item dropdown notification-section">
+          <a href="#" class="notification dropdown-toggle" id="navbarDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="true">
+              <span><i class='fa fa-bell'></i></span>
+              <span class="badge" id="badge">0</span>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="messages"
+              data-popper-placement="bottom-end"
+              style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(-70px, 42px, 0px);">
+              
+              
+              <li class="dropdown-item"></li>
+              <hr class="dropdown-divider">
+              
+               <li class='dropdown-item'></li>
+              <hr class="dropdown-divider"> 
+              
+          </ul>
+      </li>
+      {% endif %}
+
       </div>
 
     </div>
@@ -52,7 +74,7 @@
   <header id="header" class="fixed-top d-flex align-items-cente">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-lg-between">
 
-      <h1 class="logo me-auto me-lg-0"><a href="{% url 'home' %}">KebabHouse</a></h1>
+      <h1 class="logo me-auto me-lg-0"><a href="{% url 'home' %}">KebabHouse</a><a style="color: darkgoldenrod;" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">Order now!</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -94,11 +116,11 @@
            
     
                 <div class="member" data-aos="zoom-in" data-aos-delay="100">
-                  <img src="{% static '' %}assets/img/gallery/gallery-2.jpg" class="img-fluid" alt="">
+                  <img src="{% static '' %}assets/img/address1.jpg" class="img-fluid" alt="">
                   <div class="member-info">
                     <div class="member-info-content">
                       <h4>Branch 1</h4>
-                      <span>Address</span>
+                      <span>Pražská 69</span>
                     </div>
                     <div class="social">
                       <a href="{% url 'order' %}"><button class="btn btn-warning">Vybrat</button></a>
@@ -165,39 +187,68 @@
                     <input type="text" class="form-control" name="phone" id="phone" placeholder="tvé číslo" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
                     <div class="validate"></div>
                   </div>
-                  <label for="item1">vybrat jídlo:</label>
-                    <select class="form-control " style="width: 50%;" name="item1">
-                      <option></option>
-                      {% for a in p %}
-                      <option value="{{a.name}}">{{a.name}}</option>
-                      {% endfor %}
-                    </select>
-                    <input type="number" class="form-control" style="width: 50%; float: right;" name="q1" id="q1" placeholder="zadejte množství"  data-msg="zadejte množství">
-                    <label for="item2">vybrat jídlo:</label>
-                    <select class="form-control " style="width: 50%;" name="item2">
-                      <option></option>
-                      {% for a in p %}
-                      <option value="{{a.name}}">{{a.name}}</option>
-                      {% endfor %}
-                    </select>
-                    <input type="number" class="form-control" style="width: 50%; float: right;" name="q2" id="q2" placeholder="zadejte množství"  data-msg="zadejte množství">
-                    <label for="item3">vybrat jídlo:</label>
-                    <select class="form-control " style="width: 50%;" name="item3">
-                      <option></option>
-                      {% for a in p %}
-                      <option value="{{a.name}}">{{a.name}}</option>
-                      {% endfor %}
-                    </select>
-                    <input type="number" class="form-control" style="width: 50%; float: right;" name="q3" id="q3" placeholder="zadejte množství"  data-msg="zadejte množství">
-                    <label for="item4">vybrat jídlo:</label>
-                    <select class="form-control " style="width: 50%;" name="item4">
-                      <option></option>
-                      {% for a in p %}
-                      <option value="{{a.name}}">{{a.name}}</option>
-                      {% endfor %}
-                    </select>
-                    <input type="number" class="form-control" style="width: 50%; float: right;" name="q4" id="q4" placeholder="zadejte množství"  data-msg="zadejte množství">
+                  <label for="item1">vybrat jídlo:</label>       
 
+                    <select class="form-control " style="width: 45%;" name="item1">
+                      <option value="">jídlo</option>
+                      {% for a in p %}
+                      <option value="{{a.name}}">{{a.name}}</option>
+                      {% endfor %}
+                    </select> &nbsp;&nbsp;
+                    <input type="number" class="form-control" style="width: 15%; float: right;" name="q1" id="q1" placeholder="ks"  data-msg="zadejte množství">
+                    &nbsp;&nbsp;
+
+                    <select class="form-control " style="width: 35% ; float: right;" name="sos1">
+                      <option value="">omáčka</option>
+                      {% for a in s %}
+                      <option value="{{a.name}}">{{a.name}}</option>
+                      {% endfor %}
+                    </select>
+                    <label for="item2">vybrat jídlo:</label>
+                    <select class="form-control " style="width: 45%;" name="item2">
+                      <option value="">jídlo</option>
+                      {% for a in p %}
+                      <option value="{{a.name}}">{{a.name}}</option>
+                      {% endfor %}
+                    </select> &nbsp;&nbsp;
+                    <input type="number" class="form-control" style="width: 15%; float: right;" name="q2" id="q2" placeholder="ks"  data-msg="zadejte množství">
+                    &nbsp;&nbsp;
+                    <select class="form-control " style="width: 35% ; float: right;" name="sos2">
+                      <option value="">omáčka</option>
+                      {% for a in s %}
+                      <option value="{{a.name}}">{{a.name}}</option>
+                      {% endfor %}
+                    </select>
+                    <label for="item3">vybrat jídlo:</label>
+                    <select class="form-control " style="width: 45%;" name="item3">
+                      <option value="">jídlo</option>
+                      {% for a in p %}
+                      <option value="{{a.name}}">{{a.name}}</option>
+                      {% endfor %}
+                    </select> &nbsp;&nbsp;
+                    <input type="number" class="form-control" style="width: 15%; float: right;" name="q3" id="q3" placeholder="ks"  data-msg="zadejte množství">
+                    &nbsp;&nbsp;
+                    <select class="form-control " style="width: 35% ; float: right;" name="sos3">
+                      <option value="">omáčka</option>
+                      {% for a in s %}
+                      <option value="{{a.name}}">{{a.name}}</option>
+                      {% endfor %}
+                    </select>
+                    <label for="item4">vybrat jídlo:</label>
+                    <select class="form-control " style="width: 45%;" name="item4">
+                      <option value="">jídlo</option>
+                      {% for a in p %}
+                      <option value="{{a.name}}">{{a.name}}</option>
+                      {% endfor %}
+                    </select> &nbsp;&nbsp;
+                    <input type="number" class="form-control" style="width: 15%; float: right;" name="q4" id="q4" placeholder="ks"  data-msg="zadejte množství">
+                    &nbsp;&nbsp;
+                    <select class="form-control " style="width: 35% ; float: right;" name="sos4">
+                      <option value="">omáčka</option>
+                      {% for a in s %}
+                      <option value="{{a.name}}">{{a.name}}</option>
+                      {% endfor %}
+                    </select>
 
                     
                   <div class="col-lg-4 col-md-6 form-group mt-3">
@@ -232,8 +283,6 @@
           dataType: 'json',
           success: function (data) {
               if (data.msg === 'Success') {
-                const song = "{% static '' %}assets/img/notif.mp3";
-                new Audio(song).play();
                   alert('dostali jsme vaši zprávu, děkujeme!(Success)');
                   $("#order-form").trigger('reset');
         } else {
@@ -245,6 +294,81 @@
   }
   
   </script>
+      {% if user.is_authenticated %}
+
+      <script type="text/javascript">
+        let url = `ws://${window.location.host}/ws/socket-server/`
+  
+        const chatSocket = new WebSocket(url)
+  
+        chatSocket.onmessage = function(e){
+            let data = JSON.parse(e.data)
+            console.log('Data:', data)
+  
+            if(data.type === 'chat'){
+                let messages = document.getElementById('messages')
+                let badge = document.getElementById('badge')
+                const song = "{% static '' %}assets/img/notif.mp3";
+                new Audio(song).play();   
+  
+                messages.insertAdjacentHTML('beforeend', `<div>
+                                        <p>${data.message}</p>
+                                    </div>`)
+                badge.innerText = 'New Order!!!'  
+               
+            }
+        }
+  
+        let form2 = document.getElementById('order-form')
+        form2.addEventListener('submit', (e)=> {
+            e.preventDefault()
+            
+            let message = 'u hv new order' 
+            chatSocket.send(JSON.stringify({
+                'message':message
+            }))
+                           
+            form2.reset()
+        })
+  
+    </script>
+     {% else %}
+     <script type="text/javascript">
+      let url = `ws://${window.location.host}/ws/socket-server/`
+  
+      const chatSocket = new WebSocket(url)
+  
+      chatSocket.onmessage = function(e){
+          let data = JSON.parse(e.data)
+          console.log('Data:', data)
+  
+          if(data.type === 'chat'){
+              let messages = document.getElementById('messages')
+              let badge = document.getElementById('badge')
+  
+              messages.insertAdjacentHTML('beforeend', `<div>
+                                      <p>${data.message}</p>
+                                  </div>`)
+              badge.innerText = 'New Order!!!'  
+             
+          }
+      }
+  
+      let form2 = document.getElementById('order-form')
+      form2.addEventListener('submit', (e)=> {
+          e.preventDefault()
+          
+          let message = 'u hv new order' 
+          chatSocket.send(JSON.stringify({
+              'message':message
+          }))
+                         
+          form2.reset()
+      })
+  
+  </script>
+  {% endif %}
+  
 
       
 
