@@ -43,25 +43,28 @@
         <i class="bi bi-phone d-flex align-items-center"><span> 736 602 552</span></i>
         </a>
         <i class="bi bi-clock d-flex align-items-center ms-4"><span> Po-Ne: 10AM - 22PM</span></i>
+
+        {% if user.is_authenticated %}
         <li class="nav-item dropdown notification-section">
           <a href="#" class="notification dropdown-toggle" id="navbarDropdown" role="button"
               data-bs-toggle="dropdown" aria-expanded="true">
               <span><i class='fa fa-bell'></i></span>
-              <span class="badge" id="notification-badge">0</span>
+              <span class="badge" id="badge">0</span>
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="notifications-dropdown"
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="messages"
               data-popper-placement="bottom-end"
               style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(-70px, 42px, 0px);">
               
-              {% for i in notifications %}
-              <li class="dropdown-item">{{i.message}}</li>
+              
+              <li class="dropdown-item"></li>
               <hr class="dropdown-divider">
-              {% endfor %}
-              {% comment %} <li class='dropdown-item'>Hello</li>
-              <hr class="dropdown-divider"> {% endcomment %}
+              
+               <li class='dropdown-item'></li>
+              <hr class="dropdown-divider"> 
               
           </ul>
       </li>
+      {% endif %}
       </div>
 
     </div>
@@ -593,34 +596,87 @@
   }
   
   </script>
-   {{ room_name|json_script:"room-name" }}
-   <script>
-       const roomName = JSON.parse(document.getElementById('room-name').textContent);
+      <form id="form222">
+        <input type="text" name="message"/>
+    </form>
 
-       const notificationSocket = new WebSocket(
-           'ws://'
-           + window.location.host
-           + '/ws/notification/'
-           + roomName
-           + '/'
-       );
+    <div id=""></div>
+    {% if user.is_authenticated %}
 
-       notificationSocket.onmessage = function(e) {
-           const data = JSON.parse(e.data);
-           //document.querySelector('#chat-log').value += (data.message + '\n');
-           console.log(data);
-           document.getElementById("notifications-dropdown").innerHTML = "<li class='dropdown-item'>" + data + "</li><hr class='dropdown-divider'>" + document.getElementById("notifications-dropdown").innerHTML;
-           document.getElementById("notification-badge").innerHTML = parseInt(document.getElementById("notification-badge").innerHTML) + 1;
-       };
+    <script type="text/javascript">
+      let url = `ws://${window.location.host}/ws/socket-server/`
 
-       notificationSocket.onclose = function(e) {
-           console.error('Chat socket closed unexpectedly');
-       };
+      const chatSocket = new WebSocket(url)
 
-     
+      chatSocket.onmessage = function(e){
+          let data = JSON.parse(e.data)
+          console.log('Data:', data)
 
-      
-   </script>
+          if(data.type === 'chat'){
+              let messages = document.getElementById('messages')
+              let badge = document.getElementById('badge')
+              const song = "{% static '' %}assets/img/notif.mp3";
+              new Audio(song).play();   
+
+              messages.insertAdjacentHTML('beforeend', `<div>
+                                      <p>${data.message}</p>
+                                  </div>`)
+              badge.innerText = 'New Order!!!'  
+             
+          }
+      }
+
+      let form2 = document.getElementById('form222')
+      form2.addEventListener('submit', (e)=> {
+          e.preventDefault()
+          
+          let message = 'u hv new order' 
+          chatSocket.send(JSON.stringify({
+              'message':message
+          }))
+                         
+          form2.reset()
+      })
+
+  </script>
+   {% else %}
+   <script type="text/javascript">
+    let url = `ws://${window.location.host}/ws/socket-server/`
+
+    const chatSocket = new WebSocket(url)
+
+    chatSocket.onmessage = function(e){
+        let data = JSON.parse(e.data)
+        console.log('Data:', data)
+
+        if(data.type === 'chat'){
+            let messages = document.getElementById('messages')
+            let badge = document.getElementById('badge')
+
+            messages.insertAdjacentHTML('beforeend', `<div>
+                                    <p>${data.message}</p>
+                                </div>`)
+            badge.innerText = 'New Order!!!'  
+           
+        }
+    }
+
+    let form2 = document.getElementById('form222')
+    form2.addEventListener('submit', (e)=> {
+        e.preventDefault()
+        
+        let message = 'u hv new order' 
+        chatSocket.send(JSON.stringify({
+            'message':message
+        }))
+                       
+        form2.reset()
+    })
+
+</script>
+{% endif %}
+
+
 
 </body>
 
