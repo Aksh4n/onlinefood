@@ -14,6 +14,9 @@ from pathlib import Path
 
 
 # heroku things!!!!!! need to be deleted sometime
+import django_heroku
+import dj_database_url
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -148,3 +151,4 @@ CHANNEL_LAYERS = {
     }
 }
 
+django_heroku.settings(locals())
