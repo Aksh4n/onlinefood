@@ -105,3 +105,23 @@ class Drink(models.Model):
     name = models.CharField(max_length=100)
     def __str__(self):
         return self.name 
+
+import requests
+from django.db.models.signals import post_save
+
+def sendorder(sender, instance, created, **kwargs):
+
+    
+    if created:
+
+        TOKEN = "5817820763:AAGTDlWL4-KhJVtapl7OkKtU542xrYkjIzY"
+        chat_id = "664690604"
+        message = "New Order Check it out!"
+        url = f"https://api.telegram.org/bot{TOKEN}/sendMessage?chat_id={chat_id}&text={message}"
+        print(requests.get(url).json()) # this sends the message
+
+
+        
+
+post_save.connect(sendorder, sender=Order)
+post_save.connect(sendorder, sender=Order2)

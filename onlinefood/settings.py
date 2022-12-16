@@ -42,8 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home' ,
-    'channels',
-    'chat',
     
 ]
 
@@ -77,7 +75,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'onlinefood.wsgi.application'
-ASGI_APPLICATION = 'onlinefood.asgi.application'
+#ASGI_APPLICATION = 'onlinefood.asgi.application'
 
 
 # Database
@@ -143,9 +141,9 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CHANNEL_LAYERS = {
-    'default':{
-        'BACKEND':'channels.layers.InMemoryChannelLayer'
-    }
-}
+   # CHANNEL_LAYERS = {
+   #     'default':{
+   #         'BACKEND':'channels.layers.InMemoryChannelLayer'
+  #      }
+  #  }
 
