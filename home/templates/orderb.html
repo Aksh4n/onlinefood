@@ -264,7 +264,7 @@
                   <textarea class="form-control" name="msg" rows="5" placeholder="Popis"></textarea>
                   <div class="validate"></div>
                 </div>
-                <div class="text-center"><button type="submit">Odeslat objednávku</button></div>
+                <div class="text-center"><button type="submit" id="disable">Odeslat objednávku</button></div>
               </form>
       
             </div>
@@ -296,6 +296,30 @@
   }
   
   </script>
+  <script type="text/javascript" defer="defer">
+    var enableDisable = function(){
+        var UTC_hours = new Date().getUTCHours() +1;
+        if (UTC_hours > 9 && UTC_hours < 22){
+            document.getElementById('disable').disabled = false;
+            console.log(UTC_hours);
+        }
+        else
+        {
+            document.getElementById('disable').disabled = true;
+            console.log(UTC_hours);
+            document.querySelector('#disable').innerText = 'nyní nepřijímáme objednávky! návrat v pracovní době';
+            document.querySelector('#disable').style.color = 'red';
+            
+            $(document).ready(function(){
+              alert('nyní nepřijímáme objednávky! návrat v pracovní době');
+            });
+    
+              }
+          };
+    setInterval(enableDisable, 60000*10);
+    enableDisable();
+    </script>  
+    
   <!--
       {% if user.is_authenticated %}
 
